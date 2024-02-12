@@ -17,7 +17,7 @@ import numpy as np
 
 # Set the OpenAI API key
 openai.api_key = os.environ.get(
-    "API_KEY", "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"
+    "API_KEY", ""
 )
 
 app = Flask(__name__)
@@ -27,11 +27,11 @@ CORS(app)
 # pinecone
 # Check to see if there is an environment variable with you API keys, if not, use what you put below
 OPENAI_API_KEY = os.environ.get(
-    "API_KEY", "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"
+    "API_KEY", ""
 )
 
 PINECONE_API_KEY = os.environ.get(
-    "PINECONE_API_KEY", "d7868a9a-40af-426a-940a-84a4b01d6960"
+    "PINECONE_API_KEY", ""
 )
 PINECONE_API_ENV = os.environ.get("PINECONE_API_ENV", "gcp-starter")
 # initialize pinecone
@@ -118,7 +118,7 @@ def query():
         print(docs)
 
         chain = load_qa_chain(
-            llm=ChatOpenAI(model_name="gpt-3.5-turbo",openai_api_key="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"),chain_type="stuff"
+            llm=ChatOpenAI(model_name="gpt-3.5-turbo",openai_api_key=""),chain_type="stuff"
         )
         output = chain.run(input_documents=docs, question=query)
         print(output)
